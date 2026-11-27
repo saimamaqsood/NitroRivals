@@ -1,16 +1,28 @@
+using NitroRivals.Forms;
+using NitroRivals.Services;
+
 namespace NitroRivals;
 
-static class Program
+internal static class Program
 {
-    /// <summary>
-    ///  The main entry point for the application.
-    /// </summary>
     [STAThread]
     static void Main()
     {
-        // To customize application configuration such as set high DPI settings or default font,
-        // see https://aka.ms/applicationconfiguration.
         ApplicationConfiguration.Initialize();
-        Application.Run(new Form1());
-    }    
+
+        try
+        {
+            new AuthService().EnsureAdminSeeded();   // sets admin password on first run
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(
+                "Could not connect to the database.\n\n" +
+                "Did you run standalone.sql and 02_auth_procedures.sql?\n\n" + ex.Message,
+                "Nitro Rivals", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+
+        Application.Run(new LoginForm());
+    }
 }
