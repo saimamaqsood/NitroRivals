@@ -1,3 +1,9 @@
+/* ==========================================================
+   Nitro Rivals - 02_auth_procedures.sql
+   Run AFTER standalone.sql (same database).
+   Adds: sp_VerifyOtp, sp_ResendOtp, sp_GetPlayerLogin,
+         sp_GetAdminLogin, sp_SeedAdminPassword
+   Later: paste these into standalone.sql so one script builds all.
    ========================================================== */
 USE NitroRivals;
 GO
