@@ -1,4 +1,4 @@
-namespace NitroRivals.Models;
+amespace NitroRivals.Models;
 
 /// <summary>
 /// Abstract base for every car. Cannot be instantiated directly (Abstraction).
